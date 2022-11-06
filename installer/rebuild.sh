@@ -1,7 +1,7 @@
 #!/bin/bash
-# +-----------------+
-# | npm postinstall |
-# +-----------------+
+# +---------+
+# | Rebuild |
+# +---------+
 
 # get the installer directory
 Installer_get_current_dir () {
@@ -23,17 +23,20 @@ source utils.sh
 # Go back to module root
 cd ..
 
-# rebuild MagicMirror
-echo
-Installer_info "MagicMirror rebuild..."
-MagicMirror-rebuild || exit 255
+Installer_info "Welcome to EXT-SelfiesFlash rebuild script"
+Installer_warning "This script will erase current build and reinstall it"
+Installer_yesno "Do you want to continue ?" || exit 0
 
-# module name
-Installer_module="$(grep -Eo '\"name\"[^,]*' ./package.json | grep -Eo '[^:]*$' | awk  -F'\"' '{print $2}')"
+echo
+Installer_info "Deleting: package-lock.json node_modules" 
+rm -rf package-lock.json node_modules
+Installer_success "Done."
 
-# the end...
 echo
-Installer_warning "Support is now moved in a dedicated Server: https://forum.bugsounet.fr"
-Installer_warning "@bugsounet"
-echo
-Installer_success "$Installer_module is now installed !"
+Installer_info "Upgrading..."
+git reset --hard HEAD
+git pull
+Installer_success "Done."
+
+Installer_info "Reinstalling..."
+npm install
