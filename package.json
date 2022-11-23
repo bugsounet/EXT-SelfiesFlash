@@ -1,0 +1,29 @@
+{
+  "name": "EXT-SelfiesFlash",
+  "version": "1.0.0",
+  "rev": "221121",
+  "description": "flash plugin for EXT-Selfies",
+  "main": "EXT-SelfiesFlash.js",
+  "scripts": {
+    "preinstall": "installer/preinstall.sh",
+    "postinstall": "installer/postinstall.sh",
+    "rebuild": "installer/rebuild.sh",
+    "update": "installer/update.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugsounet/EXT-SelfiesFlash"
+  },
+  "authors": [
+    "bugsounet"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://forum.bugsounet.fr"
+  },
+  "homepage": "https://wiki.bugsounet.fr",
+  "dependencies": {
+    "magicmirror-rebuild": "^1.0.7",
+    "onoff": "^6.0.3"
+  }
+}
