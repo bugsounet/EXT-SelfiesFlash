@@ -2,11 +2,11 @@
 
 EXT-SelfiesFlash is a plugins for controling a flash light when you take a selfie with EXT-Selfies. (with a gpio relay)
 
-This module is an Extented plugins for MMM-GoogleAssistant v4.x
+This module is an Extented plugins for MMM-GoogleAssistant v5.x
 
 This module an Extented plugin of EXT-Selfies, it can't work by itself without this plugin.
 
-Naturally, you can use this EXT plugin with or without out MMM-GoogleAssistant v4.x
+Naturally, you can use this EXT plugin with or without out MMM-GoogleAssistant v5.x
 
 ## Installation / update / configuration
 
