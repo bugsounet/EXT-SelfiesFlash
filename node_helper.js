@@ -1,9 +1,8 @@
 /********************
-*  EXT-Selfies v1.0 *
+*  EXT-Selfies v1.1 *
 *  Bugsounet        *
-*  11/2022          *
+*  03/2023          *
 ********************/
-
 
 var log = () => { /* do nothing */ };
 var NodeHelper = require("node_helper");
@@ -42,7 +41,9 @@ module.exports = NodeHelper.create({
       this.init = true
     } catch (err) {
       console.error("[SELFIESFLASH] " + err)
+      return
     }
+    this.sendSocketNotification("INITIALIZED")
   },
 
   socketNotificationReceived: function(noti, payload) {
