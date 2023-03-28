@@ -1,13 +1,17 @@
 /*************************
-*  EXT-SelfiesFlash v1.0 *
+*  EXT-SelfiesFlash v1.1 *
 *  Bugsounet             *
-*  11/2022               *
+*  03/2023               *
 **************************/
 
 Module.register("EXT-SelfiesFlash", {
   defaults: {
     debug: false,
     gpio: 17
+  },
+
+  start: function() {
+    this.ready= false
   },
 
   getDom: function() {
@@ -18,6 +22,10 @@ Module.register("EXT-SelfiesFlash", {
 
   socketNotificationReceived: function(noti, payload) {
     switch(noti) {
+      case "INITIALIZED":
+        this.ready = true
+        this.sendNotification("EXT_HELLO", this.name)
+        break
       case "GPIO_NOT_ACCESSIBLE":
         this.sendNotification("EXT_ALERT", {
           type: "error",
@@ -49,17 +57,14 @@ Module.register("EXT-SelfiesFlash", {
 
   notificationReceived: function(noti, payload, sender) {
     switch(noti) {
-      case "DOM_OBJECTS_CREATED":
-        this.sendSocketNotification('INIT', this.config)
-        break
-      case "GAv5_READY":
-        if (sender.name == "MMM-GoogleAssistant") this.sendNotification("EXT_HELLO", this.name)
+      case "GW_READY":
+        if (sender.name == "Gateway") this.sendSocketNotification('INIT', this.config)
         break
       case "EXT_SELFIESFLASH-ON":
-        this.sendSocketNotification("FLASH-ON")
+        if (this.ready) this.sendSocketNotification("FLASH-ON")
         break
       case "EXT_SELFIESFLASH-OFF":
-        this.sendSocketNotification("FLASH-OFF")
+        if (this.ready) this.sendSocketNotification("FLASH-OFF")
         break
     }
   },
