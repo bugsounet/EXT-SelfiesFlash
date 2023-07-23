@@ -6,7 +6,7 @@
   "main": "EXT-SelfiesFlash.js",
   "scripts": {
     "preinstall": "installer/preinstall.sh",
-    "postinstall": "installer/postinstall.sh -r -m",
+    "postinstall": "installer/postinstall.sh -r -m -b",
     "rebuild": "installer/rebuild.sh",
     "update": "installer/update.sh",
     "reset": "git reset --hard",
