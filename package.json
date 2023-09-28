@@ -1,7 +1,7 @@
 {
   "name": "EXT-SelfiesFlash",
-  "version": "1.1.1",
-  "rev": "230723",
+  "version": "1.1.2",
+  "rev": "230929",
   "description": "flash plugin for EXT-Selfies",
   "main": "EXT-SelfiesFlash.js",
   "scripts": {
