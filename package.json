@@ -26,7 +26,7 @@
   "homepage": "https://wiki.bugsounet.fr",
   "dependencies": {
     "esbuild": "^0.19.3",
-    "glob": "^10.3.7",
+    "glob": "^10.3.10",
     "magicmirror-rebuild": "^1.0.8",
     "onoff": "^6.0.3"
   }
