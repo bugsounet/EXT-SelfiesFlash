@@ -49,7 +49,7 @@ Module.register("EXT-SelfiesFlash", {
           type: "error",
           message: "Error Detected. Try to solve it with `npm run rebuild` in EXT-SelfiesFlash directory",
           timer: 10000
-        })     
+        })
         break
 
     }
@@ -57,8 +57,8 @@ Module.register("EXT-SelfiesFlash", {
 
   notificationReceived: function(noti, payload, sender) {
     switch(noti) {
-      case "GW_READY":
-        if (sender.name == "Gateway") this.sendSocketNotification('INIT', this.config)
+      case "GA_READY":
+        if (sender.name == "MMM-GoogleAssistant") this.sendSocketNotification('INIT', this.config)
         break
       case "EXT_SELFIESFLASH-ON":
         if (this.ready) this.sendSocketNotification("FLASH-ON")
