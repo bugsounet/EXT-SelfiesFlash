@@ -1,7 +1,7 @@
 {
   "name": "EXT-SelfiesFlash",
-  "version": "1.2.0",
-  "rev": "240103",
+  "version": "1.2.1",
+  "rev": "240221",
   "description": "flash plugin for EXT-Selfies",
   "main": "EXT-SelfiesFlash.js",
   "scripts": {
@@ -25,9 +25,9 @@
   },
   "homepage": "https://wiki.bugsounet.fr",
   "dependencies": {
+    "@electron/rebuild": "^3.6.0",
     "esbuild": "^0.20.1",
     "glob": "^10.3.10",
-    "magicmirror-rebuild": "^1.0.9",
     "onoff": "^6.0.3"
   }
 }
