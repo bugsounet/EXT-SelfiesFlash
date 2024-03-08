@@ -1,8 +1,7 @@
-/*************************
-*  EXT-SelfiesFlash v1.1 *
-*  Bugsounet             *
-*  03/2023               *
-**************************/
+/********************
+*  EXT-SelfiesFlash *
+*  Bugsounet        *
+********************/
 
 Module.register("EXT-SelfiesFlash", {
   defaults: {
@@ -10,63 +9,63 @@ Module.register("EXT-SelfiesFlash", {
     gpio: 17
   },
 
-  start: function() {
-    this.ready= false
+  start () {
+    this.ready= false;
   },
 
-  getDom: function() {
-    var wrapper = document.createElement("div")
-    wrapper.style.display= "none"
-    return wrapper
+  getDom () {
+    var wrapper = document.createElement("div");
+    wrapper.style.display= "none";
+    return wrapper;
   },
 
-  socketNotificationReceived: function(noti, payload) {
+  socketNotificationReceived (noti, payload) {
     switch(noti) {
       case "INITIALIZED":
-        this.ready = true
-        this.sendNotification("EXT_HELLO", this.name)
-        break
+        this.ready = true;
+        this.sendNotification("EXT_HELLO", this.name);
+        break;
       case "GPIO_NOT_ACCESSIBLE":
         this.sendNotification("EXT_ALERT", {
           type: "error",
           message: "Gpio functionality is not accessible on this computer"
-        })
-        break
+        });
+        break;
       case "OPENFLASH_ERROR":
         this.sendNotification("EXT_ALERT", {
           type: "error",
           message: "Error happen when opening flash"
-        })
-        break
+        });
+        break;
       case "CLOSEFLASH_ERROR":
         this.sendNotification("EXT_ALERT", {
           type: "error",
           message: "Error happen when closing flash"
-        })
-        break
+        });
+        break;
       case "REBUILD_NEEDED":
         this.sendNotification("EXT_ALERT", {
           type: "error",
           message: "Error Detected. Try to solve it with `npm run rebuild` in EXT-SelfiesFlash directory",
           timer: 10000
-        })
-        break
+        });
+        break;
 
     }
   },
 
-  notificationReceived: function(noti, payload, sender) {
+  notificationReceived (noti, payload, sender) {
     switch(noti) {
       case "GA_READY":
-        if (sender.name == "MMM-GoogleAssistant") this.sendSocketNotification('INIT', this.config)
-        break
+        if (sender.name === "MMM-GoogleAssistant") this.sendSocketNotification("INIT", this.config);
+        break;
       case "EXT_SELFIESFLASH-ON":
-        if (this.ready) this.sendSocketNotification("FLASH-ON")
-        break
+        if (this.ready) this.sendSocketNotification("FLASH-ON");
+        break;
       case "EXT_SELFIESFLASH-OFF":
-        if (this.ready) this.sendSocketNotification("FLASH-OFF")
-        break
+        if (this.ready) this.sendSocketNotification("FLASH-OFF");
+        break;
     }
-  },
+  }
 
-})
+});
